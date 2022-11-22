@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import { AppContext_Pokemon } from '../../AppContext';
 import useFetchData from '../APIdata/useFetchData';
 /*
     Get a paramemter_number from the section(s)
@@ -7,7 +8,8 @@ import useFetchData from '../APIdata/useFetchData';
 //===========================================
 
 function useFetchItemData(pokemon_index){
-    const data = useFetchData();
+    const { pokemon } = useContext(AppContext_Pokemon)
+    const data = pokemon[pokemon_index - 1];
     let picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon_index}.png`
     return({data, pokemon_index, picture})
 }
@@ -17,8 +19,8 @@ function useFetchItemData(pokemon_index){
 
 async function GetTypeData(pokemon_index){
 
-    return await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_index}/`)
-    .then((response) => response.json())
+    const { pokemon } = useContext(AppContext_Pokemon)
+    return pokemon[pokemon_index - 1];
 }
 function useTypeFetchData(pokemon_index) {
 
@@ -36,7 +38,9 @@ function useTypeFetchData(pokemon_index) {
 
 //-------------------------------------
 
+
 export function useGetPokiData(pokemon_index){
+
     const itemdata = useFetchItemData(pokemon_index);
     const type_data = useTypeFetchData(pokemon_index);
     

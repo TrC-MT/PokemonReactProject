@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import HandleClick from '../../../sections/hjake07/Jsection';
 import CreateCard from '../../CardCreaters/createCardToRender'
 import Player1Score from './player1score'
 import Player2Score from './player2score';
 import Player3Score from './player3score';
 import Player4Score from './player4score';
+import {AppContext_Pokemon, AppContext_TypeSelected} from '../../../AppContext';
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(array) {
@@ -14,11 +15,15 @@ function shuffleArray(array) {
   }
 }
 
+
+
 export default function Jcode(){ //Remember to rename your section here
 
     const [displayArray, setDisplayArray] = useState([]);
     const [firstCardSelectedPosition, setFirstCardSelectedPosition ] = useState(null);
     const [secondCardSelectedPosition, setSecondCardSelectedPosition] = useState(null);
+    const { pokemon } = useContext(AppContext_Pokemon);
+    const {type_selected} = useContext(AppContext_TypeSelected)
 
     const resetSelectedPositions= () => {
       setFirstCardSelectedPosition(null);
@@ -57,22 +62,27 @@ export default function Jcode(){ //Remember to rename your section here
 
     useEffect(() => {
       let displayArray;
-      const defaultArray = Array.from({length: 81}, (_, i) => i + 1)
-      let randomArray = []
-          for(let j = 0; j < 20; j++){
-            const randomNumber = Math.floor(Math.random() * 81)
-            randomArray.push(defaultArray[randomNumber])
-          }
-      const arrayWithUniqueTypes = [...new Set(randomArray)].slice(0, 12);
-      const displayArrayWithoutPosition = [
-        ...arrayWithUniqueTypes,
-        ...arrayWithUniqueTypes
-      ];
+      const validPokemonIndexes = pokemon.filter(pokemonItem => {
+        
+        const type1 = pokemonItem?.types[0]?.type?.name ?? '';
+        const type2 = pokemonItem?.types[1]?.type?.name ?? '';
 
-      // shuffle
-      shuffleArray(displayArrayWithoutPosition);
+        return type_selected === null || type_selected === type1 || type_selected === type2;
+        
+      }).map(({ index }) => index);
+      // const length = Math.min(81, validPokemonIndexes.length)
+      // const randomIndexes = new Array(20).fill(0).map((o, i) => validPokemonIndexes[Math.floor(Math.random() * length)])
+
+      // const arrayWithUniqueTypes = [...new Set(randomIndexes)].slice(0, 12);
+      // const displayArrayWithoutPosition = [
+      //   ...arrayWithUniqueTypes,
+      //   ...arrayWithUniqueTypes
+      // ];
+
+      // // shuffle
+      // shuffleArray(displayArrayWithoutPosition);
       
-      displayArray = displayArrayWithoutPosition.map((index, position) => ({
+      displayArray = validPokemonIndexes.map((index, position) => ({
         index, isHidden: false, position
       }))
 
@@ -91,6 +101,8 @@ export default function Jcode(){ //Remember to rename your section here
         setSecondCardSelectedPosition(pos);
       }
     };
+
+
     
     return(
             <div className='mySection' id="myTableSection">
@@ -100,8 +112,8 @@ export default function Jcode(){ //Remember to rename your section here
                           <CreateCard
                             onClick={() => onClick(position)}
                             key={position}
-                            pokemonIndex={1 + index} 
-                            typeToDisplay={null}
+                            pokemonIndex={index}
+                            typeToDisplay={type_selected}
                             selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
                           />
                         </div> 

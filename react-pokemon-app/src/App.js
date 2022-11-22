@@ -6,16 +6,38 @@ import Jcode from './Global/Components/Jcomponents/gameCode'
 import Wcode from './sections/Walls101/Wsection';
 import './sections/hjake07/Jstyles.css'
 import PAGES from './Pages/Pages'
-import { useState } from 'react';
-import { AppContext_AmountPlayers, AppContext_TypeSelected } from './AppContext';
+import { useEffect, useState } from 'react';
+import { AppContext_AmountPlayers, AppContext_TypeSelected, AppContext_Pokemon } from './AppContext';
+
+
+async function getPokemonData(pokemon_index) {
+    return await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_index}/`)
+      .then((response) => response.json())
+  }
+  
+  async function getAllPokemonData() {
+    const pokemonIndexes = new Array(180).fill(1)
+      .map((x, i) => x + i)
+      
+    const allFetchPromises = pokemonIndexes.map(pokemon_index => new Promise(res => getPokemonData(pokemon_index).then(data => res(data))))
+  
+    return Promise.all(allFetchPromises);
+  
+  }
 
 export default function App(){
     const [players_count, setPlayersCount] = useState(1)
     const [type_selected, setTypeSelected] = useState(null)
+    const [pokemon, setPokemon ] = useState([]);
+
+    useEffect(() => {
+        getAllPokemonData().then(pokemon => setPokemon(pokemon))
+    }, []);
 
     return(
         <AppContext_AmountPlayers.Provider value={{players_count, setPlayersCount}}>
         <AppContext_TypeSelected.Provider value={{type_selected, setTypeSelected}}>
+        <AppContext_Pokemon.Provider value ={{ pokemon }}>
             <Router>
                 <Navbar />
                 <Routes>
@@ -26,7 +48,8 @@ export default function App(){
                     <Route path="*" element={<ErrorPage/>} />
                 </Routes>
             </Router>
-            </AppContext_TypeSelected.Provider>
+        </AppContext_Pokemon.Provider>
+        </AppContext_TypeSelected.Provider>
         </AppContext_AmountPlayers.Provider>
         
     )

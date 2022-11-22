@@ -11,3 +11,7 @@ export const AppContext_TypeSelected = createContext({
     type_selected: null,
      setTypeSelected: () => {}
 })
+
+export const AppContext_Pokemon = createContext({
+    pokemon: []
+})

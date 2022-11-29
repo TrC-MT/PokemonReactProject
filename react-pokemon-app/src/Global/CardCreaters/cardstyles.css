@@ -7,6 +7,8 @@
     border-radius: 10px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-image: none;
+    position: relative;
 }
 .card:hover {
     cursor:pointer;
@@ -24,12 +26,13 @@ font-size: 20px;
 color: black;
 }
 
-.cards {
+/* .cards {
     margin: 0;
     padding: 5px;
     width: 15%;
-}
+} */
 .cardTypes{
+    display: block !important;
     color: white;
     text-align: center;
 
@@ -39,22 +42,20 @@ color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .cardName {
+display: block !important;
 text-align: center;
 font-size: 20px;
 }
 .cardImage {
+    display: block !important;
     margin-left: 15%;
 }
 .cardType {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     color: black;
 }
-.cards {
-    margin: 0;
-    padding: 5px;
-    width: 15%;
-}
+
 .player1Scores, .player2Scores, .player3Scores, .player4Scores{
     background-color: rgba(255, 255, 255);
     width: fit-content;
@@ -89,4 +90,21 @@ font-size: 20px;
 
 .selected {
     border: 3px solid gold;
+}
+.flip {
+    transform: rotateY(360deg);
+}
+.cardNameHidden {
+    display: none;
+
+}
+.cardImageHidden {
+    display: none;
+
+}
+.cardTypesHidden {
+    display: none;
+}
+.cardTypeHidden {
+    display: none;
 }

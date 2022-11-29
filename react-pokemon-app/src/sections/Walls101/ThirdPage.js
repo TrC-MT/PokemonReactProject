@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import CreateCard from '../../Global/CardCreaters/createCardToRender';
 import '../Walls101/Wstyles.css'
 import '../hjake07/Jstyles.css'
-
+import All from '../hjake07/Jsection';
 import DeckOption from '../../Global/Components/Wcomponents/ChosenDeck'
 
 export default function DeckSelection(){
@@ -11,18 +10,7 @@ export default function DeckSelection(){
             <DeckOption></DeckOption>
             <br></br>
             <br></br>
-            <div class='maincontainer'>
-                <div class='card' id='card'>
-                    <div class='front'>
-
-                    </div>
-                    <div class='back'>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <All />
         </div>
         
     )

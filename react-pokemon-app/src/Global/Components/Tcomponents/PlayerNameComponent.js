@@ -15,7 +15,7 @@ export default function PlayerNameComponents(){
 
 export function PlayerNameComponent(props){
     
-    function setplayername(name, playerIndex){
+    function Setplayername(name, playerIndex){
         const [player1name, player2name, player3name, player4name, setplayer1name, setplayer2name, setplayer3name, setplayer4name] = useContext(AppContext_PlayersNames)
 
         if(playerIndex == 1){
@@ -33,6 +33,6 @@ export function PlayerNameComponent(props){
     }
 
     return(
-        <input type="text" onChange={(e) => setplayername(e.target.value, props.playerIndex)} id={'player' + props.playerIndex + 'nameInput'} placeholder={'Player' + props.playerIndex + 'name'} className='nameInput w-25 form-control' />
+        <input type="text" onChange={(e) => Setplayername(e.target.value, props.playerIndex)} id={'player' + props.playerIndex + 'nameInput'} placeholder={'Player' + props.playerIndex + 'name'} className='nameInput w-25 form-control' />
     )
 }

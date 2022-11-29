@@ -5,7 +5,7 @@ export default function Player4Score(props){
     const [player4name] = useContext(AppContext_PlayersNames)
     return(
         <div className="player4Scores">
-            {player4name}: 2 Matches
+            {props.player4name}: 2 Matches
         </div>
     )
 }

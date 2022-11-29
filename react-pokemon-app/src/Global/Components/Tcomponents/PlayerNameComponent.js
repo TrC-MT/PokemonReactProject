@@ -33,6 +33,6 @@ export function PlayerNameComponent(props){
     }
 
     return(
-        <input type="text" onChange={setplayername(e.target.value, props.playerIndex)} id={'player' + props.playerIndex + 'nameInput'} placeholder={'Player' + props.playerIndex + 'name'} className='nameInput w-25 form-control' />
+        <input type="text" onChange={(e) => setplayername(e.target.value, props.playerIndex)} id={'player' + props.playerIndex + 'nameInput'} placeholder={'Player' + props.playerIndex + 'name'} className='nameInput w-25 form-control' />
     )
 }

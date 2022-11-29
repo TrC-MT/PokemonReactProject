@@ -1,12 +1,24 @@
-// import React from "react";
-// import { useState } from "react";
-// //------------------------------------------------
-// const checkMatch = () => {
-//     const [first, second] = checkCards;
-//     if(card[first].pokemonIndex === card[second].pokemonIndex){
-//         console.log('match')
-//     }
-//     }
-//     const handleClick = (index) => {
-        
-//     }
+import CreateCard from "../../Global/CardCreaters/createCardToRender";
+import { useContext } from "react";
+import { AppContext_CardDisplaying, AppContext_TypeSelected } from "../../AppContext";
+export default function All(){
+const allArray = Array.from({length: 151}, (_, i) => i + 1)
+console.log(allArray)
+const waterArray = []
+const {isCardDisplaying} = useContext(AppContext_CardDisplaying)
+const {type_selected} = useContext(AppContext_TypeSelected)
+return(
+    
+    <div className="p3container">
+{allArray.map((index) => (
+    
+    
+    
+        <><CreateCard pokemonIndex={index} typeToDisplay={type_selected} /></>
+   
+))
+}
+   
+
+</div>
+)}

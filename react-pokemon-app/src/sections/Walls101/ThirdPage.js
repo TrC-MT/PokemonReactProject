@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import CreateCard from '../../Global/CardCreaters/createCardToRender';
 import '../Walls101/Wstyles.css'
 import '../hjake07/Jstyles.css'
 import '../../Global/CardCreaters/cardstyles.css'

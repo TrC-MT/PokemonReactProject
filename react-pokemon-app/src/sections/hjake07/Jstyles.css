@@ -9,9 +9,16 @@
 .backgroundTest {
     background-color: rgb(43, 80, 215);
     background-image: url(../../Global/images/pokeball.png);
-    background-size: 130px;
+    background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
+    width: 140px;
+    height: 190px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.backgroundTest:hover {
+    cursor: pointer;
 }
 .theContainer {
     background-image: url(../../Global/images/pokemon-background.png);
@@ -23,7 +30,6 @@
     background-color: rgb(244, 244, 244);
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
 .box {
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -85,7 +91,15 @@ nav {
     text-decoration: none;
 }
 .container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    justify-items: start;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+.p3container {
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: center;
 }

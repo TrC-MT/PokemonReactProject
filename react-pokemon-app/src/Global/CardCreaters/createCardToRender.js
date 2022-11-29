@@ -3,7 +3,7 @@ import {useGetPokiData} from './createCardDataObject';
 import './cardstyles.css'
 import { AppContext_CardDisplaying } from '../../AppContext';
 export default function CreateCard(props){
-    const onClick = props.onClick;
+    const onClick = null; //props.onClick
     const isSelected = props.selected;
     const pokemon_index = props.pokemonIndex ?? 1;
     const typeToDisplay = props.typeToDisplay;

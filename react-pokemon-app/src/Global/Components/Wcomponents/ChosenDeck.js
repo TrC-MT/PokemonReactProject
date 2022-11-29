@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 export default function DeckOption(){
 
     return(
-        <div>
+        <div class='choosingDeck'>
             <div className='chosenDeck'>
                 <label>Choose a deck: </label>
                 <select name='decks' id='decks'>

@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext } from 'react';
 import CreateCard from '../../CardCreaters/createCardToRender'
 import Player1Score from './player1score'
-import Player2Score from './player2score';
-import Player3Score from './player3score';
+import Player2Score from './player2score'
+import Player3Score from './player3score'
 import Player4Score from './player4score';
 
 
-import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected } from '../../../AppContext';
+import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected, AppContext_PlayersNames } from '../../../AppContext';
 
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -19,6 +19,7 @@ function shuffleArray(array) {
 
 export default function Jcode(){ //Remember to rename your section here
   const [players_count] = useContext(AppContext_AmountPlayers)
+  const [player1name, player2name, player3name, player4name] = useContext(AppContext_PlayersNames)
   const fireArray = [4,5,6,37,38,58,59,77,78,126,136,146]
   const waterArray = [7,8,9,54,55,60,61,62,72,73,79,80,86,87,90,91,98,99,116,117,118,119,120,121,129,130,131,134,138,139,140,141]
   const grassArray = [1,2,3,43,44,45,46,47,69,70,71,102,103,114]
@@ -177,7 +178,7 @@ export default function Jcode(){ //Remember to rename your section here
                ) : null )}
              
                     </div>
-            <Player1Score />
+            <Player1Score Name={player1name} />
             
         </div>
       )
@@ -199,8 +200,8 @@ export default function Jcode(){ //Remember to rename your section here
                ) : null )}
              
                     </div>
-            <Player1Score />
-            <Player2Score />
+            <Player1Score Name={player1name} />
+            <Player2Score Name={player2name} />
             
         </div>
       )
@@ -222,9 +223,9 @@ export default function Jcode(){ //Remember to rename your section here
                ) : null )}
              
                     </div>
-            <Player1Score />
-            <Player2Score />
-            <Player3Score />
+            <Player1Score Name={player1name} />
+            <Player2Score Name={player2name} />
+            <Player3Score Name={player3name} />
             
         </div>
       )
@@ -246,10 +247,10 @@ export default function Jcode(){ //Remember to rename your section here
                ) : null )}
              
                     </div>
-            <Player1Score />
-            <Player2Score />
-            <Player3Score />
-            <Player4Score />
+            <Player1Score Name={player1name} />
+            <Player2Score Name={player2name} />
+            <Player3Score Name={player3name} />
+            <Player4Score Name={player4name} />
             
         </div>
       )

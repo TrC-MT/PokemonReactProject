@@ -7,17 +7,19 @@ import Wcode from './sections/Walls101/Wsection';
 import './sections/hjake07/Jstyles.css'
 import PAGES from './Pages/Pages'
 import { useState } from 'react';
-import { AppContext_AmountPlayers, AppContext_TypeSelected, AppContext_CardDisplaying } from './AppContext';
+import { AppContext_AmountPlayers, AppContext_TypeSelected, AppContext_CardDisplaying, AppContext_PlayersNames } from './AppContext';
 
 export default function App(){
     const [players_count, setPlayersCount] = useState(1)
     const [type_selected, setTypeSelected] = useState(null)
     const [isCardDisplaying, setIsCardDisplaying] = useState(null)
+    const [player1name, player2name, player3name, player4name, setplayer1name, setplayer2name, setplayer3name, setplayer4name] = useState(null)
 
     return(
         <AppContext_AmountPlayers.Provider value={{players_count, setPlayersCount}}>
         <AppContext_TypeSelected.Provider value={{type_selected, setTypeSelected}}>
         <AppContext_CardDisplaying.Provider value={{isCardDisplaying, setIsCardDisplaying}}>
+        <AppContext_PlayersNames.Provider value={{player1name, player2name, player3name, player4name, setplayer1name, setplayer2name, setplayer3name, setplayer4name}}>
             <Router>
                 <Navbar />
                 <Routes>
@@ -28,6 +30,7 @@ export default function App(){
                     <Route path="*" element={<ErrorPage/>} />
                 </Routes>
             </Router>
+        </AppContext_PlayersNames.Provider>
         </AppContext_CardDisplaying.Provider>
         </AppContext_TypeSelected.Provider>
         </AppContext_AmountPlayers.Provider>

@@ -103,3 +103,33 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
 }
+.player1Scores {
+    position: absolute;
+    top: 10%;
+    right: 5px;
+    color: blue;
+
+}
+.player2Scores {
+    position: absolute;
+    top: 20%;
+    right: 5px;
+    color: red;
+}
+.player3Scores {
+    position: absolute;
+    top: 30%;
+    right: 5px;
+    color: green;
+}
+.player4Scores {
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    color: orange;
+
+}
+.playerActive {
+    height: 40px;
+    border: 3px solid blue;
+}

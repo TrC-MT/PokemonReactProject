@@ -4,8 +4,6 @@ import { AppContext_CardDisplaying, AppContext_TypeSelected } from "../../AppCon
 export default function All(){
 const allArray = Array.from({length: 151}, (_, i) => i + 1)
 console.log(allArray)
-const waterArray = []
-const {isCardDisplaying} = useContext(AppContext_CardDisplaying)
 const {type_selected} = useContext(AppContext_TypeSelected)
 return(
     
@@ -22,3 +20,8 @@ return(
 
 </div>
 )}
+export function BlankCard(){
+    return(
+        <div className="opacityZero"></div>
+    )
+}

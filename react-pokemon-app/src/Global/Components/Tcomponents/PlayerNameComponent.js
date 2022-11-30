@@ -3,36 +3,53 @@ import { useContext } from 'react';
 
 export default function PlayerNameComponents(){
     const {players_count} = useContext(AppContext_AmountPlayers)
+    let {players} = useContext(AppContext_PlayersNames)
+    
     return(
         <div style={{display : 'flex', justifyContent : 'space-around'}}>
-        {new Array(players_count).fill(1).map((one, index) =>(
-            <PlayerNameComponent playerIndex={one + index}></PlayerNameComponent>
+        {players.map((player) =>(
+            <PlayerNameComponent player={player}></PlayerNameComponent>
         ) )}
         </div>
     )
-    
 }
 
-export function PlayerNameComponent(props){
-    
-    function Setplayername(name, playerIndex){
-        const [player1name, player2name, player3name, player4name, setplayer1name, setplayer2name, setplayer3name, setplayer4name] = useContext(AppContext_PlayersNames)
-
-        if(playerIndex == 1){
-            player1name = setplayer1name(name)
-        }
-        else if(playerIndex == 2){
-            player2name = setplayer2name(name)
-        }
-        else if(playerIndex == 3){
-            player3name = setplayer3name(name)
-        }
-        else if(playerIndex == 4){
-            player4name = setplayer4name(name)
-        }
+export function PlayerNameComponent({player}){
+    const {setPlayers} = useContext(AppContext_PlayersNames)
+    function setPlayerName(name, id){
+        setPlayers((players) => {
+            players['player'+id].name = name;
+            return {...players}
+        })
     }
 
     return(
-        <input type="text" onChange={(e) => Setplayername(e.target.value, props.playerIndex)} id={'player' + props.playerIndex + 'nameInput'} placeholder={'Player' + props.playerIndex + 'name'} className='nameInput w-25 form-control' />
+        <input type="text" onChange={(e) => setPlayerName(e.target.value, player.id)} id={`player-${player.id}-nameInput`} placeholder={`Player-${player.id}-name`} className='nameInput w-25 form-control' />
     )
 }
+
+/*
+players {
+    player1: {
+        name: value,
+        score: value,
+        id: 1
+    },
+    player2: {
+        name: value,
+        score: value,
+        id: 2
+    },
+    player3: {
+        name: value,
+        score: value,
+        id: 3
+    },
+    player4: {
+        name: value,
+        score: value,
+        id: 4
+    },
+}
+
+*/

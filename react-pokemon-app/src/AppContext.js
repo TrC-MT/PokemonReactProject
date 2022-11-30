@@ -18,13 +18,6 @@ export const AppContext_CardDisplaying = createContext({
 })
 
 export const AppContext_PlayersNames = createContext({
-    player1name: '',
-    player2name: '',
-    player3name: '',
-    player4name: '',
-    setplayer1name: () => {},
-    setplayer2name: () => {},
-    setplayer3name: () => {},
-    setplayer4name: () => {}
-
+    players: {},
+    setPlayers: () => {}
 })

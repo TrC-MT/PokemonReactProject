@@ -13,13 +13,13 @@ export default function App(){
     const [players_count, setPlayersCount] = useState(1)
     const [type_selected, setTypeSelected] = useState(null)
     const [isCardDisplaying, setIsCardDisplaying] = useState(null)
-    const [player1name, player2name, player3name, player4name, setplayer1name, setplayer2name, setplayer3name, setplayer4name] = useState(null)
+    const [players, setPlayers] = useState([])
 
     return(
         <AppContext_AmountPlayers.Provider value={{players_count, setPlayersCount}}>
         <AppContext_TypeSelected.Provider value={{type_selected, setTypeSelected}}>
         <AppContext_CardDisplaying.Provider value={{isCardDisplaying, setIsCardDisplaying}}>
-        <AppContext_PlayersNames.Provider value={{player1name, player2name, player3name, player4name, setplayer1name, setplayer2name, setplayer3name, setplayer4name}}>
+        <AppContext_PlayersNames.Provider value={{players, setPlayers}}>
             <Router>
                 <Navbar />
                 <Routes>

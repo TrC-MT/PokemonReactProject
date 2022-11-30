@@ -1,9 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import CreateCard from '../../CardCreaters/createCardToRender'
-import Player1Score from './player1score'
-import Player2Score from './player2score'
-import Player3Score from './player3score'
-import Player4Score from './player4score';
+import PlayerScore from './playerScore';
 
 
 import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected, AppContext_PlayersNames } from '../../../AppContext';
@@ -18,7 +15,7 @@ function shuffleArray(array) {
 }
 
 export default function Jcode(){ //Remember to rename your section here
-  const [players_count] = useContext(AppContext_AmountPlayers)
+  const {players_count} = useContext(AppContext_AmountPlayers)
   // const fireArray = [4,5,6,37,38,58,59,77,78,126,136,146]
   // const waterArray = [7,8,9,54,55,60,61,62,72,73,79,80,86,87,90,91,98,99,116,117,118,119,120,121,129,130,131,134,138,139,140,141]
   // const grassArray = [1,2,3,43,44,45,46,47,69,70,71,102,103,114]
@@ -158,107 +155,27 @@ export default function Jcode(){ //Remember to rename your section here
       }
     };
    
+    return(
+      <div className='mySection' id="myTableSection">
+            <div className='container'>
+              {displayArray.map(({ index, isHidden, position }) => !isHidden? (
+                    <>
+                       <CreateCard
+                        onClick={() => onClick(position)}
+                        key={position}
+                        pokemonIndex={index + 1}
+                        typeToDisplay={null}
+                        selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
+                      /> 
+                    </> 
+               ) : null )}
+             
+                    </div>
+            <PlayerScore />
+            
+        </div>
+    )
     
-    const [player1name, player2name, player3name, player4name] = useContext(AppContext_PlayersNames)
-    if(players_count == 1){
-      return(
-        <div className='mySection' id="myTableSection">
-            <div className='container'>
-              {displayArray.map(({ index, isHidden, position }) => !isHidden? (
-                    <>
-                       <CreateCard
-                        onClick={() => onClick(position)}
-                        key={position}
-                        pokemonIndex={index + 1}
-                        typeToDisplay={null}
-                        selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
-                      /> 
-                    </> 
-               ) : null )}
-             
-                    </div>
-            <Player1Score Name={player1name} />
-            
-        </div>
-      )
-    }
-    else if(players_count == 2){
-      return(
-        <div className='mySection' id="myTableSection">
-            <div className='container'>
-              {displayArray.map(({ index, isHidden, position }) => !isHidden? (
-                    <>
-                       <CreateCard
-                        onClick={() => onClick(position)}
-                        key={position}
-                        pokemonIndex={index + 1}
-                        typeToDisplay={null}
-                        selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
-                      /> 
-                    </> 
-               ) : null )}
-             
-                    </div>
-            <Player1Score Name={player1name} />
-            <Player2Score Name={player2name} />
-            
-        </div>
-      )
-    }
-    else if(players_count == 3){
-      return(
-        <div className='mySection' id="myTableSection">
-            <div className='container'>
-              {displayArray.map(({ index, isHidden, position }) => !isHidden? (
-                    <>
-                       <CreateCard
-                        onClick={() => onClick(position)}
-                        key={position}
-                        pokemonIndex={index + 1}
-                        typeToDisplay={null}
-                        selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
-                      /> 
-                    </> 
-               ) : null )}
-             
-                    </div>
-            <Player1Score Name={player1name} />
-            <Player2Score Name={player2name} />
-            <Player3Score Name={player3name} />
-            
-        </div>
-      )
-    }
-    else if(players_count == 4){
-      return(
-        <div className='mySection' id="myTableSection">
-            <div className='container'>
-              {displayArray.map(({ index, isHidden, position }) => !isHidden? (
-                    <>
-                       <CreateCard
-                        onClick={() => onClick(position)}
-                        key={position}
-                        pokemonIndex={index + 1}
-                        typeToDisplay={null}
-                        selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
-                      /> 
-                    </> 
-               ) : null )}
-             
-                    </div>
-            <Player1Score Name={player1name} />
-            <Player2Score Name={player2name} />
-            <Player3Score Name={player3name} />
-            <Player4Score Name={player4name} />
-            
-        </div>
-      )
-    }
-    else{
-      return(
-        <h1>Error: players_count is not correct!</h1>
-      )
-    }
 
     }
 

@@ -7,8 +7,9 @@ export default function PlayerNameComponents(){
     
     return(
         <div style={{display : 'flex', justifyContent : 'space-around'}}>
-        {players.map((player) =>(
-            <PlayerNameComponent player={player}></PlayerNameComponent>
+
+        {Object.keys(players).map((playerId) =>(
+            <PlayerNameComponent player={players[playerId]} key={playerId}></PlayerNameComponent>
         ) )}
         </div>
     )

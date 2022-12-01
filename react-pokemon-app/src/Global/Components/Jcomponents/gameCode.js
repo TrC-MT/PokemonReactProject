@@ -32,6 +32,12 @@ export default function Jcode(){ //Remember to rename your section here
   // const {type_selected} = useContext(AppContext_TypeSelected)
   // const {isCardDisplaying} = useContext(AppContext_CardDisplaying)
 
+  useEffect(() => {
+    console.log('players_count changed. Setting active_player to 1')
+    active_player = 1
+
+    }, [players_count])
+
 
     let [displayArray, setDisplayArray] = useState([]);
     const [firstCardSelectedPosition, setFirstCardSelectedPosition ] = useState(null);

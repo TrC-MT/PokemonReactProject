@@ -189,23 +189,24 @@ export default function Jcode(){ //Remember to rename your section here
    
     return(
       <div className='mySection' id="myTableSection">
-            <div className='container'>
-              {displayArray.map(({ index, isHidden, position }) => !isHidden?  (
-                    <>
-                       <CreateCard
-                        onClick={() => onClick(position)}
-                        key={position}
-                        pokemonIndex={index + 1}
-                        typeToDisplay={null}
-                        selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
-                      /> 
-                    </> 
-               ) : <BlankCard></BlankCard> )}
-             
-                    </div>
-                    {Object.keys(players).map(player => 
-                      <PlayerScore player={players[player]} active_player={active_player}/>
-                    )}
+          <div className='container'>
+            {displayArray.map(({ index, isHidden, position }) => !isHidden?  (
+                  <>
+                      <CreateCard
+                      onClick={() => onClick(position)}
+                      key={position}
+                      pokemonIndex={index + 1}
+                      typeToDisplay={null}
+                      selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
+                    /> 
+                  </> 
+              ) : <BlankCard></BlankCard> )}
+            
+            </div>
+                  {Object.keys(players).map(player => 
+                    <PlayerScore player={players[player]} active_player={active_player}/>
+                  )}
+            {players_count == 1 ? <p className='player2Scores'>Rounds left: {rounds}</p> : ''}
             
             
         </div>

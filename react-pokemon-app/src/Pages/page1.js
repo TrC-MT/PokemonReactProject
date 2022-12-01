@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import PlayerAmountOptionComponent from "../Global/Components/Tcomponents/PlayerAmountOptions"
 import PlayerNameComponents from "../Global/Components/Tcomponents/PlayerNameComponent";
 import '../sections/hjake07/Jstyles.css'
-import Pages from "./Pages";
 export default function WelcomePage(){
     
     return(

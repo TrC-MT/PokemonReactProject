@@ -94,41 +94,8 @@ export default function Jcode(){ //Remember to rename your section here
           rounds -= 1
         }
 
-        // if(player = player1){
-        //   player = player2
-        // }
-        // else if(player = player2){
-        //   player = player3
-        // }
-        // else if(player = player3){
-        //   player = player4
-        // }
-        // else if(player = player4){
-        //   player = player1
-        // }
-        // else{
-        //   console.log('error')
-        // }
-        // console.log(player)
-        // score +=1;
-
        updateWhenMatchFound();
       } else if(isNotMatch) {
-      //   if(player = player1){
-      //     player = player2
-      //   }
-      //   else if(player = player2){
-      //     player = player3
-      //   }
-      //   else if(player = player3){
-      //     player = player4
-      //   }
-      //   else if(player = player4){
-      //     player = player1
-      //   }
-      //   else{
-      //     console.log('error')
-      //   }
       if(active_player < players_count){
         active_player += 1
       }

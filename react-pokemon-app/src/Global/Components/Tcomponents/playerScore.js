@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { AppContext_PlayersNames } from '../../../AppContext';
 
-export default function PlayerScore({player}){
-    var score = 2;
+export default function PlayerScore(props){
     var isPlural = ''
+    var score = props.player.score
+    var isActive = props.active_player == props.player.id
     if(score > 1){
         isPlural = 'Matches'
     }
@@ -17,8 +18,8 @@ export default function PlayerScore({player}){
         isPlural = 'Not A Number.'
     }
     return(
-        <div className={`player${player.id}Scores`}>
-            {player.name}: {score} {isPlural}
+        <div className={`player${props.player.id}Scores  ${isActive ? 'ActivePlayer': ''}`}>
+            {props.player.name}: {score} {isPlural}
         </div>
     )
 }

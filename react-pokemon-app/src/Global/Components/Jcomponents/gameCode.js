@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import CreateCard from '../../CardCreaters/createCardToRender'
-import PlayerScore from './playerScore';
+import PlayerScore from '../Tcomponents/playerScore';
 import { BlankCard } from '../../../sections/hjake07/Jsection';
 
 import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected, AppContext_PlayersNames } from '../../../AppContext';
@@ -12,7 +12,7 @@ function shuffleArray(array) {
       [array[i], array[j]] = [array[j], array[i]];
   }
 }
-
+let active_player = 1;
 export default function Jcode(){ //Remember to rename your section here
   const {players_count} = useContext(AppContext_AmountPlayers)
   const {players} = useContext(AppContext_PlayersNames)
@@ -31,6 +31,11 @@ export default function Jcode(){ //Remember to rename your section here
   // const {type_selected} = useContext(AppContext_TypeSelected)
   // const {isCardDisplaying} = useContext(AppContext_CardDisplaying)
 
+  useEffect(() => {
+    active_player = 1
+
+    }, [players_count])
+
 
     let [displayArray, setDisplayArray] = useState([]);
     const [firstCardSelectedPosition, setFirstCardSelectedPosition ] = useState(null);
@@ -43,7 +48,6 @@ export default function Jcode(){ //Remember to rename your section here
       }, 900)
     }
     const updateWhenMatchFound = () => {
-      console.log('You found a match!')
      
       displayArray[firstCardSelectedPosition].isHidden = true;
       displayArray[secondCardSelectedPosition].isHidden = true;
@@ -52,6 +56,12 @@ export default function Jcode(){ //Remember to rename your section here
 
       
     }
+    const {setPlayers} = useContext(AppContext_PlayersNames)
+      function setPlayerScore(score, id){
+        setPlayers((players) => {
+            players['player'+id].score = score;
+            return {...players}
+        })}
     useEffect(() => {
       const firstCardPosition = displayArray[firstCardSelectedPosition]?.position
       const secondCardPosition = displayArray[secondCardSelectedPosition]?.position
@@ -63,6 +73,16 @@ export default function Jcode(){ //Remember to rename your section here
       const isNotMatch = isBothSelected && !isMatch
 
       if(isMatch) {
+        let score = players['player'+active_player].score
+        score += 1
+        players['player'+active_player].score = score;
+        setPlayerScore(score, active_player)
+        if(active_player < players_count){
+          active_player += 1
+        }
+        else{
+          active_player = 1
+        }
         // if(player = player1){
         //   player = player2
         // }
@@ -80,6 +100,7 @@ export default function Jcode(){ //Remember to rename your section here
         // }
         // console.log(player)
         // score +=1;
+
        updateWhenMatchFound();
       } else if(isNotMatch) {
       //   if(player = player1){
@@ -97,7 +118,12 @@ export default function Jcode(){ //Remember to rename your section here
       //   else{
       //     console.log('error')
       //   }
-        console.log('Not a match!');
+      if(active_player < players_count){
+        active_player += 1
+      }
+      else{
+        active_player = 1
+      }
         
         resetSelectedPositions();
       }
@@ -163,7 +189,7 @@ export default function Jcode(){ //Remember to rename your section here
              
                     </div>
                     {Object.keys(players).map(player => 
-                      <PlayerScore player={players[player]}/>
+                      <PlayerScore player={players[player]} active_player={active_player}/>
                     )}
             
             
@@ -172,10 +198,3 @@ export default function Jcode(){ //Remember to rename your section here
     
 
     }
-
-     
-      
-  
-  
-        
-      

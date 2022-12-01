@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { AppContext_AmountPlayers, AppContext_TypeSelected } from '../../../AppContext';
+// import All from '../../../sections/hjake07/Jsection';
 
 export default function DeckOption(){
     const {players_count} = useContext(AppContext_AmountPlayers)
@@ -11,7 +12,7 @@ export default function DeckOption(){
             <div className='chosenDeck'>
                 <label>Choose a deck: </label>
                 <select name='decks' id='decks' onChange={(e) => {setTypeSelected(e.target.value)}} value={type_selected}>
-                    <option value={null}>All</option>
+                    <option value=''>All</option>
                     <option value='poison'>Poison</option>
                     <option value='flying'>Flying</option>
                     <option value='water'>Water</option>
@@ -34,7 +35,7 @@ export default function DeckOption(){
             <div className='chosenDeck'>
                 <label>Choose a deck: </label>
                 <select name='decks' id='decks' onChange={(e) => {setTypeSelected(e.target.value)}} value={type_selected}>
-                    <option value={null}>All</option>
+                    <option value=''>All</option>
                     <option value='poison'>Poison</option>
                     <option value='flying'>Flying</option>
                     <option value='water'>Water</option>
@@ -56,7 +57,7 @@ export default function DeckOption(){
             <div className='chosenDeck'>
                 <label>Choose a deck: </label>
                 <select name='decks' id='decks' onChange={(e) => {setTypeSelected(e.target.value)}} value={type_selected}>
-                    <option value={null}>All</option>
+                    <option value=''>All</option>
                     <option value='poison'>Poison</option>
                     <option value='flying'>Flying</option>
                     <option value='water'>Water</option>

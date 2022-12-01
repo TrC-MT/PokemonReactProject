@@ -13,7 +13,7 @@ function shuffleArray(array) {
       [array[i], array[j]] = [array[j], array[i]];
   }
 }
-
+let active_player = 1;
 export default function Jcode(){ //Remember to rename your section here
   const {players_count} = useContext(AppContext_AmountPlayers)
   const {players} = useContext(AppContext_PlayersNames)
@@ -69,19 +69,20 @@ export default function Jcode(){ //Remember to rename your section here
       const isMatch =  isBothSelected && firstCardIndex === secondCardIndex && firstCardPosition !== secondCardPosition;
       const isNotMatch = isBothSelected && !isMatch
 
-
-      let active_player = 1;
+      console.log('start of use effect active_player: ' + active_player)
       if(isMatch) {
         let score = players['player'+active_player].score
         score += 1
         players['player'+active_player].score = score;
+        setPlayerScore(score, active_player)
         if(active_player < players_count){
+          console.log('incrementing active_player')
           active_player += 1
         }
         else{
+          console.log('setting active_player to 1')
           active_player = 1
         }
-        setPlayerScore(score, active_player)
         // if(player = player1){
         //   player = player2
         // }
@@ -117,6 +118,14 @@ export default function Jcode(){ //Remember to rename your section here
       //   else{
       //     console.log('error')
       //   }
+      if(active_player < players_count){
+        console.log('incrementing active_player')
+        active_player += 1
+      }
+      else{
+        console.log('setting active_player to 1')
+        active_player = 1
+      }
         console.log('Not a match!');
         
         resetSelectedPositions();

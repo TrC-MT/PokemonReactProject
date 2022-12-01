@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import CreateCard from '../../CardCreaters/createCardToRender'
-import PlayerScore from './playerScore';
+import PlayerScore from '../Tcomponents/playerScore';
 import { BlankCard } from '../../../sections/hjake07/Jsection';
 
 import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected, AppContext_PlayersNames } from '../../../AppContext';
@@ -53,6 +53,12 @@ export default function Jcode(){ //Remember to rename your section here
 
       
     }
+    const {setPlayers} = useContext(AppContext_PlayersNames)
+      function setPlayerScore(score, id){
+        setPlayers((players) => {
+            players['player'+id].score = score;
+            return {...players}
+        })}
     useEffect(() => {
       const firstCardPosition = displayArray[firstCardSelectedPosition]?.position
       const secondCardPosition = displayArray[secondCardSelectedPosition]?.position
@@ -63,7 +69,19 @@ export default function Jcode(){ //Remember to rename your section here
       const isMatch =  isBothSelected && firstCardIndex === secondCardIndex && firstCardPosition !== secondCardPosition;
       const isNotMatch = isBothSelected && !isMatch
 
+
+      let active_player = 1;
       if(isMatch) {
+        let score = players['player'+active_player].score
+        score += 1
+        players['player'+active_player].score = score;
+        if(active_player < players_count){
+          active_player += 1
+        }
+        else{
+          active_player = 1
+        }
+        setPlayerScore(score, active_player)
         // if(player = player1){
         //   player = player2
         // }
@@ -81,6 +99,7 @@ export default function Jcode(){ //Remember to rename your section here
         // }
         // console.log(player)
         // score +=1;
+
        updateWhenMatchFound();
       } else if(isNotMatch) {
       //   if(player = player1){
@@ -173,10 +192,3 @@ export default function Jcode(){ //Remember to rename your section here
     
 
     }
-
-     
-      
-  
-  
-        
-      

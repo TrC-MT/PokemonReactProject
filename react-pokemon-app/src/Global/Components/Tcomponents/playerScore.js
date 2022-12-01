@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import { AppContext_PlayersNames } from '../../../AppContext';
 
 export default function PlayerScore({player}){
-    var score = 2;
     var isPlural = ''
+    var score = player.score
     if(score > 1){
         isPlural = 'Matches'
     }

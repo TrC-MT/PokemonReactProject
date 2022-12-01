@@ -9,6 +9,9 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-image: none;
     position: relative;
+    /* transform-style: preserve-3d;
+    transition: all 0.8s ease; */
+    /* I've made the change here. Putting transform-style and transition******* */
 }
 .card:hover {
     cursor:pointer;

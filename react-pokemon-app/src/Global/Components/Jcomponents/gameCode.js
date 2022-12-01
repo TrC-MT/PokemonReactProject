@@ -13,6 +13,7 @@ function shuffleArray(array) {
   }
 }
 let active_player = 1;
+let rounds = 18;
 export default function Jcode(){ //Remember to rename your section here
   const {players_count} = useContext(AppContext_AmountPlayers)
   const {players} = useContext(AppContext_PlayersNames)
@@ -63,6 +64,11 @@ export default function Jcode(){ //Remember to rename your section here
             return {...players}
         })}
     useEffect(() => {
+
+      if(rounds == 0){
+        alert('Game Over.')
+      }
+
       const firstCardPosition = displayArray[firstCardSelectedPosition]?.position
       const secondCardPosition = displayArray[secondCardSelectedPosition]?.position
       const firstCardIndex = displayArray[firstCardSelectedPosition]?.index;
@@ -83,6 +89,11 @@ export default function Jcode(){ //Remember to rename your section here
         else{
           active_player = 1
         }
+
+        if(players_count == 1){
+          rounds -= 1
+        }
+
         // if(player = player1){
         //   player = player2
         // }
@@ -123,6 +134,10 @@ export default function Jcode(){ //Remember to rename your section here
       }
       else{
         active_player = 1
+      }
+
+      if(players_count == 1){
+        rounds -= 1
       }
         
         resetSelectedPositions();

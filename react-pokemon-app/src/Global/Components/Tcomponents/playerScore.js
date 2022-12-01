@@ -9,7 +9,7 @@ export default function PlayerScore(props){
         isPlural = 'Matches'
     }
     else if(score <= 0){
-        isPlural = ''
+        isPlural = 'Matches'
     }
     else if(score == 1){
         isPlural = 'Match'

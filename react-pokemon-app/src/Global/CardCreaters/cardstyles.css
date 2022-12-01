@@ -86,7 +86,7 @@ font-size: 20px;
     display: none;
 }
 .opacityZero {
-    background-color: red;
+    opacity: 0 !important;
     width: 140px;
     height: 190px;
 }

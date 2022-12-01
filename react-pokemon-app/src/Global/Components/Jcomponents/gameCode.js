@@ -51,18 +51,20 @@ export default function Jcode(){ //Remember to rename your section here
     }
     const updateWhenMatchFound = () => {
       console.log('You found a match!')
+     
       displayArray[firstCardSelectedPosition].isHidden = true;
       displayArray[secondCardSelectedPosition].isHidden = true;
       setDisplayArray([...displayArray]);
       resetSelectedPositions();
-    }
 
+      
+    }
     useEffect(() => {
       const firstCardPosition = displayArray[firstCardSelectedPosition]?.position
       const secondCardPosition = displayArray[secondCardSelectedPosition]?.position
       const firstCardIndex = displayArray[firstCardSelectedPosition]?.index;
       const secondCardIndex = displayArray[secondCardSelectedPosition]?.index;
-      const isBothSelected = firstCardSelectedPosition !== null && 
+      let isBothSelected = firstCardSelectedPosition !== null && 
       secondCardSelectedPosition !== null
       const isMatch =  isBothSelected && firstCardIndex === secondCardIndex && firstCardPosition !== secondCardPosition;
       const isNotMatch = isBothSelected && !isMatch
@@ -153,7 +155,7 @@ export default function Jcode(){ //Remember to rename your section here
     return(
             <div className='mySection' id="myTableSection">
                 <div className='container'>
-                  {displayArray.map(({ index, isHidden, position }) => !isHidden? (
+                  {displayArray.map(({ index, isHidden, position }) => !isHidden?  (
                         <>
                            <CreateCard
                             onClick={() => onClick(position)}
@@ -163,7 +165,7 @@ export default function Jcode(){ //Remember to rename your section here
                             selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
                           /> 
                         </> 
-                   ) : null )}
+                   ) : <BlankCard></BlankCard> )}
                  
                         </div>
                 <Player1Score active=''/>

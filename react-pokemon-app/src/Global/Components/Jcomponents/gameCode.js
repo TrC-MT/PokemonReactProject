@@ -88,7 +88,7 @@ export default function Jcode(){ //Remember to rename your section here
         // console.log(player)
         score +=1;
        updateWhenMatchFound();
-      // } else if(isNotMatch) {
+      } else if(isNotMatch) {
       //   if(player = player1){
       //     player = player2
       //   }

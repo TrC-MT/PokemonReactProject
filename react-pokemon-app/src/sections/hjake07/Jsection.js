@@ -14,7 +14,7 @@ return(
     
     
     
-        <><ShowCards pokemonIndex={index} typeToDisplay={type_selected} /></>
+        <><ShowCards pokemonIndex={index} typeToDisplay={!type_selected ? null : type_selected} /></>
    
 ))
 }

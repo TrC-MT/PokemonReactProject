@@ -11,9 +11,9 @@ export default function ShowCards(props){
     const { name = '', picture_url = '', type1 = '', type2 = ''} = useGetPokiData(pokemon_index);
     const isDisplay = typeToDisplay === null || typeToDisplay === type1 || typeToDisplay === type2;
     return isDisplay ? (
-        <div className={`backgroundTest ${isSelected ? 'selected card': ''}`} onClick={onClick}>
-            <h2 className={`cardNameHidden ${isSelected ? 'cardName': ''}`} >{name.charAt(0).toUpperCase() + name.slice(1)}</h2>
-            <img className={`card ${isSelected ? 'cardImage': ''}`} src={picture_url}></img>
+        <div className={`card`}>
+            <h2 className={`cardName`} >{name.charAt(0).toUpperCase() + name.slice(1)}</h2>
+            <img className={`cardImage}`} src={picture_url}></img>
             <div className={`cardTypesHidden ${isSelected ? 'cardTypes': ''}`}>
                 <span className={`cardTypeHidden ${isSelected ? 'cardType': ''}`}>{type1} {type2}</span>
             </div>

@@ -11,7 +11,7 @@ export default function DeckOption(){
             <div className='chosenDeck'>
                 <label>Choose a deck: </label>
                 <select name='decks' id='decks' onChange={(e) => {setTypeSelected(e.target.value)}} value={type_selected}>
-                    <option value={null}>All</option>
+                    <option value=''>All</option>
                     <option value='poison'>Poison</option>
                     <option value='flying'>Flying</option>
                     <option value='water'>Water</option>

@@ -1,4 +1,6 @@
-import CreateCard from "../../Global/CardCreaters/createCardToRender";
+// import CreateCard from "../../Global/CardCreaters/createCardToRender";
+// import CardCreate from "../../Global/Components/Wcomponents/CardsDisplay";
+import ShowCards from "../../Global/Components/Wcomponents/CardsDisplay";
 import { useContext } from "react";
 import { AppContext_CardDisplaying, AppContext_TypeSelected } from "../../AppContext";
 export default function All(){
@@ -14,7 +16,7 @@ return(
     
     
     
-        <><CreateCard pokemonIndex={index} typeToDisplay={type_selected} /></>
+        <><ShowCards pokemonIndex={index} typeToDisplay={type_selected} /></>
    
 ))
 }

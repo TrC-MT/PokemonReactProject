@@ -8,10 +8,10 @@ import Player4Score from './player4score';
 
 import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected } from '../../../AppContext';
 import { BlankCard } from '../../../sections/hjake07/Jsection';
-let player1 = 'player1'
-let player2 = 'player2'
-let player3 = 'player3'
-let player4 = 'player4'
+let player1 = 1;
+let player2 = 2;
+let player3 = 3;
+let player4 = 4;
 export let score = 0;
 export let player = {player1}
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -70,40 +70,42 @@ export default function Jcode(){ //Remember to rename your section here
       const isNotMatch = isBothSelected && !isMatch
 
       if(isMatch) {
-        if(player1){
-          player = player2
-        }
-        else if(player2){
-          player = player3
-        }
-        else if(player3){
-          player = player4
-        }
-        else if(player4){
-          player = player1
-        }
-        else{
-          console.log('error')
-        }
+        // if(player = player1){
+        //   player = player2
+        // }
+        // else if(player = player2){
+        //   player = player3
+        // }
+        // else if(player = player3){
+        //   player = player4
+        // }
+        // else if(player = player4){
+        //   player = player1
+        // }
+        // else{
+        //   console.log('error')
+        // }
+        // console.log(player)
         score +=1;
        updateWhenMatchFound();
-      } else if(isNotMatch) {
-        if(player1){
-          player = player2
-        }
-        else if(player2){
-          player = player3
-        }
-        else if(player3){
-          player = player4
-        }
-        else if(player4){
-          player = player1
-        }
-        else{
-          console.log('error')
-        }
+      // } else if(isNotMatch) {
+      //   if(player = player1){
+      //     player = player2
+      //   }
+      //   else if(player = player2){
+      //     player = player3
+      //   }
+      //   else if(player = player3){
+      //     player = player4
+      //   }
+      //   else if(player = player4){
+      //     player = player1
+      //   }
+      //   else{
+      //     console.log('error')
+      //   }
         console.log('Not a match!');
+        
         resetSelectedPositions();
       }
 

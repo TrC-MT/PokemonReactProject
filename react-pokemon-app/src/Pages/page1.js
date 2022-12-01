@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import PlayerAmountOptionComponent from "../Global/Components/Tcomponents/PlayerAmountOptions"
 import PlayerNameComponents from "../Global/Components/Tcomponents/PlayerNameComponent";
-
+import '../sections/hjake07/Jstyles.css'
 export default function WelcomePage(){
     
     return(
@@ -12,7 +12,7 @@ export default function WelcomePage(){
                 <h2 className='playerSelect'>Players</h2>
                 <PlayerAmountOptionComponent></PlayerAmountOptionComponent>
                 <PlayerNameComponents ></PlayerNameComponents>
-                <button className='btn btn-primary w-25 mx-auto'>Start Playing!</button>
+                <a href='/game'><button className='btn btn-primary w-25 mx-auto'>Start Playing!</button></a>
             </div>
         </div>
     )

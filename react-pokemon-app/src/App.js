@@ -26,7 +26,6 @@ export default function App(){
                     <Route exact path="/" element={<PAGES.Page1 />} />
                     <Route path="/game" element={<PAGES.Page2 />} />
                     <Route path="/choose-type" element={<PAGES.Page3 />} />
-                    <Route path="/hidden-tests" element={<TestPage/>} />
                     <Route path="*" element={<ErrorPage/>} />
                 </Routes>
             </Router>

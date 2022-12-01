@@ -33,7 +33,6 @@ export default function Jcode(){ //Remember to rename your section here
   // const {isCardDisplaying} = useContext(AppContext_CardDisplaying)
 
   useEffect(() => {
-    console.log('players_count changed. Setting active_player to 1')
     active_player = 1
 
     }, [players_count])
@@ -50,7 +49,6 @@ export default function Jcode(){ //Remember to rename your section here
       }, 900)
     }
     const updateWhenMatchFound = () => {
-      console.log('You found a match!')
      
       displayArray[firstCardSelectedPosition].isHidden = true;
       displayArray[secondCardSelectedPosition].isHidden = true;
@@ -75,18 +73,15 @@ export default function Jcode(){ //Remember to rename your section here
       const isMatch =  isBothSelected && firstCardIndex === secondCardIndex && firstCardPosition !== secondCardPosition;
       const isNotMatch = isBothSelected && !isMatch
 
-      console.log('start of use effect active_player: ' + active_player)
       if(isMatch) {
         let score = players['player'+active_player].score
         score += 1
         players['player'+active_player].score = score;
         setPlayerScore(score, active_player)
         if(active_player < players_count){
-          console.log('incrementing active_player')
           active_player += 1
         }
         else{
-          console.log('setting active_player to 1')
           active_player = 1
         }
         // if(player = player1){
@@ -125,14 +120,11 @@ export default function Jcode(){ //Remember to rename your section here
       //     console.log('error')
       //   }
       if(active_player < players_count){
-        console.log('incrementing active_player')
         active_player += 1
       }
       else{
-        console.log('setting active_player to 1')
         active_player = 1
       }
-        console.log('Not a match!');
         
         resetSelectedPositions();
       }
@@ -198,7 +190,7 @@ export default function Jcode(){ //Remember to rename your section here
              
                     </div>
                     {Object.keys(players).map(player => 
-                      <PlayerScore player={players[player]}/>
+                      <PlayerScore player={players[player]} active_player={active_player}/>
                     )}
             
             

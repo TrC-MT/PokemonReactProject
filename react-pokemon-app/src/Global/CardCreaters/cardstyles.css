@@ -68,6 +68,10 @@ font-size: 20px;
     border-radius: 5px;
     padding: 5px;
 }
+.ActivePlayer{
+    border: 3px solid;
+    border-color: indianred;
+}
 .selected {
     border: 3px solid gold;
 }

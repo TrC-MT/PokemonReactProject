@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import CreateCard from '../../CardCreaters/createCardToRender'
 import PlayerScore from './playerScore';
-
+import { BlankCard } from '../../../sections/hjake07/Jsection';
 
 import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected, AppContext_PlayersNames } from '../../../AppContext';
 
@@ -43,77 +43,68 @@ export default function Jcode(){ //Remember to rename your section here
       setSecondCardSelectedPosition(null);
       }, 900)
     }
-
     const updateWhenMatchFound = () => {
       console.log('You found a match!')
+     
       displayArray[firstCardSelectedPosition].isHidden = true;
       displayArray[secondCardSelectedPosition].isHidden = true;
-
       setDisplayArray([...displayArray]);
       resetSelectedPositions();
 
+      
     }
-
     useEffect(() => {
       const firstCardPosition = displayArray[firstCardSelectedPosition]?.position
       const secondCardPosition = displayArray[secondCardSelectedPosition]?.position
       const firstCardIndex = displayArray[firstCardSelectedPosition]?.index;
       const secondCardIndex = displayArray[secondCardSelectedPosition]?.index;
-      const isBothSelected = firstCardSelectedPosition !== null && 
+      let isBothSelected = firstCardSelectedPosition !== null && 
       secondCardSelectedPosition !== null
-      const isMatch =  isBothSelected && 
-        firstCardIndex === secondCardIndex && firstCardPosition !== secondCardPosition;
+      const isMatch =  isBothSelected && firstCardIndex === secondCardIndex && firstCardPosition !== secondCardPosition;
       const isNotMatch = isBothSelected && !isMatch
 
       if(isMatch) {
+        // if(player = player1){
+        //   player = player2
+        // }
+        // else if(player = player2){
+        //   player = player3
+        // }
+        // else if(player = player3){
+        //   player = player4
+        // }
+        // else if(player = player4){
+        //   player = player1
+        // }
+        // else{
+        //   console.log('error')
+        // }
+        // console.log(player)
+        // score +=1;
        updateWhenMatchFound();
-      } else if(isNotMatch) {
+      // } else if(isNotMatch) {
+      //   if(player = player1){
+      //     player = player2
+      //   }
+      //   else if(player = player2){
+      //     player = player3
+      //   }
+      //   else if(player = player3){
+      //     player = player4
+      //   }
+      //   else if(player = player4){
+      //     player = player1
+      //   }
+      //   else{
+      //     console.log('error')
+      //   }
         console.log('Not a match!');
+        
         resetSelectedPositions();
       }
 
-    }, [firstCardSelectedPosition, secondCardSelectedPosition, displayArray]);
+    }, [firstCardSelectedPosition, secondCardSelectedPosition]);
     let randomArray = []
-    // let finalArray;
-    // if(type_selected === 'water'){
-    //   displayArray = waterArray
-    // }
-    // else if(type_selected === 'grass'){
-    //   finalArray = grassArray
-    // }
-    // else if(type_selected === 'ground'){
-    //   finalArray = groundArray
-    // }
-    // else if(type_selected === 'flying'){
-    //   finalArray = flyingArray
-    // }
-    // else if(type_selected === 'poison'){
-    //   finalArray = poisonArray
-    // }
-    // else if(type_selected === 'fire'){
-    //   finalArray = fireArray
-    // }
-    // else if(type_selected === 'normal'){
-    //   finalArray = normalArray
-    // }
-    // else if(type_selected === 'bug'){
-    //   finalArray = bugArray
-    // }
-    // else if(type_selected === 'electric'){
-    //   finalArray = electricArray
-    // }
-    // else if(type_selected === 'fighting'){
-    //   finalArray = fightingArray
-    // }
-    // else if(type_selected === 'fairy'){
-    //   finalArray = fairyArray
-    // }
-    // else if(type_selected === 'psycic'){
-    //   finalArray = psycicArray
-    // }
-    // else{
-    //   finalArray = displayArray
-    // }
     useEffect(() => {
       let displayArray;
       const defaultArray = Array.from({length: 151}, (_, i) => i + 1)
@@ -169,7 +160,7 @@ export default function Jcode(){ //Remember to rename your section here
                         selected={position === firstCardSelectedPosition || position === secondCardSelectedPosition} 
                       /> 
                     </> 
-               ) : null )}
+               ) : <BlankCard></BlankCard> )}
              
                     </div>
                     {Object.keys(players).map(player => 

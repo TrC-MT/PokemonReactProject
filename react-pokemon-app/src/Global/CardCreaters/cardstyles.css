@@ -57,7 +57,7 @@ font-size: 20px;
 }
 
 .player1Scores, .player2Scores, .player3Scores, .player4Scores{
-    background-color: rgba(255, 255, 255);
+    background-color: white;
     width: fit-content;
     height: 30px;
     display: flex;
@@ -65,29 +65,6 @@ font-size: 20px;
     border-radius: 5px;
     padding: 5px;
 }
-
-.player1Scores {
-    position: absolute;
-    top: 10%;
-    right: 5%;
-}
-.player2Scores {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-}
-.player3Scores {
-    position: absolute;
-    top: 30%;
-    right: 5%;
-}
-.player4Scores {
-    position: absolute;
-    top: 40%;
-    right: 5%;
-
-}
-
 .selected {
     border: 3px solid gold;
 }
@@ -107,4 +84,9 @@ font-size: 20px;
 }
 .cardTypeHidden {
     display: none;
+}
+.opacityZero {
+    opacity: 0 !important;
+    width: 140px;
+    height: 190px;
 }

@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 //-------------------------------------
 import 'bootstrap/dist/css/bootstrap.css'
-import Tcode from './sections/TrC-Mt/Tsection';
+// import Tcode from './sections/TrC-Mt/Tsection';
 import Jcode from './Global/Components/Jcomponents/gameCode'
 import Wcode from './sections/Walls101/Wsection';
 import './sections/hjake07/Jstyles.css'
@@ -40,7 +40,7 @@ export default function App(){
 function TestPage(){
     return (
         <>
-            <Tcode></Tcode>
+            {/* <Tcode></Tcode> */}
             <h1>SEPARATION    - T^ Jv</h1>
             <Jcode></Jcode>
             <h1>SEPARATION -   J^ Wv </h1>

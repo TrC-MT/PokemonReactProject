@@ -2,7 +2,7 @@ import React from 'react';
 import {useGetPokiData} from './createCardDataObject';
 import './cardstyles.css'
 export default function CreateCard(props){
-    const onClick = props.on; //props.onClick
+    const onClick = props.onClick; //props.onClick
     const isSelected = props.selected;
     const pokemon_index = props.pokemonIndex ?? 1;
     const typeToDisplay = props.typeToDisplay;

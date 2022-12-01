@@ -5,7 +5,6 @@ import { BlankCard } from '../../../sections/hjake07/Jsection';
 
 import { AppContext_AmountPlayers, AppContext_CardDisplaying, AppContext_TypeSelected, AppContext_PlayersNames } from '../../../AppContext';
 
-
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -150,7 +149,7 @@ export default function Jcode(){ //Remember to rename your section here
     return(
       <div className='mySection' id="myTableSection">
             <div className='container'>
-              {displayArray.map(({ index, isHidden, position }) => !isHidden? (
+              {displayArray.map(({ index, isHidden, position }) => !isHidden?  (
                     <>
                        <CreateCard
                         onClick={() => onClick(position)}

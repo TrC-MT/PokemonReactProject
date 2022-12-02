@@ -12,7 +12,7 @@ export default function WelcomePage(){
                 <h2 className='playerSelect'>Players</h2>
                 <PlayerAmountOptionComponent></PlayerAmountOptionComponent>
                 <PlayerNameComponents ></PlayerNameComponents>
-                <a href='/game'><button className='btn btn-primary w-25 mx-auto'>Start Playing!</button></a>
+                <h3 className="centered">Click Play to start.</h3>
             </div>
         </div>
     )

@@ -59,19 +59,6 @@ font-size: 20px;
     color: black;
 }
 
-.player1Scores, .player2Scores, .player3Scores, .player4Scores{
-    background-color: white;
-    width: fit-content;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    padding: 5px;
-}
-.ActivePlayer{
-    border: 3px solid;
-    border-color: indianred;
-}
 .selected {
     border: 3px solid gold;
 }
@@ -96,4 +83,20 @@ font-size: 20px;
     opacity: 0 !important;
     width: 140px;
     height: 190px;
+}
+
+/*  Player styles *\ /* NOT card styles */
+
+.player1Scores, .player2Scores, .player3Scores, .player4Scores{
+    background-color: white;
+    width: fit-content;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+.ActivePlayer{
+    border: 3px solid;
+    border-color: indianred;
 }
